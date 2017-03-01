@@ -248,5 +248,210 @@ print md[0][1],md[2][1]
 
 
 
-##24 dic
-di = {}
+##24 dic key:value
+di = {'apple':1,'orange':3,2:4,4:'b'}
+print di[4] #print the value of key 4
+print di['orange'] 
+
+del di['orange'] #delete the entry
+print di
+
+di[1]=20 #add key 1 with value 20
+print di #without order
+
+def qq(x):
+    print 'QQ'+ x
+dic = {'apple':[4,2],'orange':3,2:{'a':3},4:'b',5:qq} # 字典鐘的字典 字典鐘的function
+dic[5]('kiss my ass') #call the func in dic
+dic['apple'][1] #call the list in dic
+dic[2]['a'] #call the dic value in dic
+
+
+
+##25 import
+import time
+print time.localtime()
+
+import time as t #abbreviate as t
+print t.localtime()
+
+from time import time, localtime #only 2 function
+print localtime() #could write directly
+print time()
+
+from time import * #import all function, could type directly
+print time()
+
+
+
+##26 build self block, script
+#create m1.py contain function 'printdata'
+#save it within same wd
+import m1 #could only call in within same wd
+m1.printdata('good')
+#or put m1.py into site-package folder
+
+
+
+##27 continue break
+a = True
+while a:
+    b = int(input('type something:'))
+    if b==1:
+        a = False #這邊false以後 會印下面still在驗證whileloop在跳出到finish
+    else:
+        pass
+    print 'still in whileloop'
+print 'finish'
+    
+while True:
+    b = int(input('type something:'))
+    if b==1:
+        break #停止whileloop 值接到底finish
+    else:
+        pass
+    print 'still in whileloop'
+print 'finish'
+
+while True:
+    b = int(input('type something:'))
+    if b==1:
+        continue #忽略下面語句回到while去
+    else:
+        pass
+    print 'still in whileloop'
+print 'finish'
+
+
+
+##28 try
+#for try and error
+try:
+    file = open('eee','r+')
+except Exception as e: #這邊是上面不能直行 改存取錯誤
+    print e
+
+try:
+    file = open('eee','r+') #要是讀加寫
+except Exception as e:
+    print 'no such a eee file'
+    resp = raw_input('do you want create new file?') 
+    ####something wrong here in py2.7 use raw_input() instead of input()
+    if resp == 'y':
+        file = open('eee','w')
+    else:
+        pass #到此處例錯誤訊息方法
+else: #沒有走到except那邊 表示沒有錯誤
+    file.write('write something in eee')
+    file.close()
+    
+    
+
+##29 zip lambda map
+#zip: combine more list together for iterate
+a=[1,2,3]
+b=[4,5,6]
+c = zip(a,b) 
+print c  
+
+for i,j in zip(a,b): #in c 也可以
+    print i,j
+
+list(zip(a,a,b)) #multiple zip
+
+#lambda: write function in one line
+def fun1(x,y):
+    return x+y
+
+fun2 = lambda x,y: x+y
+fun1(2,3)
+fun2(2,3)
+
+#map: function plus para
+map(fun1,[1],[2]) #值接輸出會是object
+list(map(fun1,[1],[2]))
+
+list(map(fun1,[1,3],[2,5])) #多重輸入1+2, 3+5 各自加自己的
+
+
+
+##30 copy deepcopy
+import copy
+a = [1,2,3]
+b = a #所引一樣 不同變量
+id(b)
+id(a) #id same, if change b, also change a
+b[0] = 11
+a
+a[1] = 22
+b
+
+#斷開鎖鍊
+c = copy.copy(a)
+id(c) #id different from a
+c[1] = 294
+print a, c
+
+#但不完全斷開list in list copy.copy() no use
+a = [1,2,[3,4]] #but this
+d = copy.copy(a) 
+#就算用copy還是只有最外層 裡面那層的id還是一樣 被凍到還是會一起動
+id(a) == id(d) #False
+id(a[2]) == id(d[2]) #True
+
+a[0] = 111
+print a, d
+
+a[2][0] = 333 #change the inner list, change all together
+print a, d
+        
+#完全斷開鎖鍊
+a = [1,2,[3,4]] #but this
+d = copy.deepcopy(a) 
+        
+a[2][0] = 333 #change the inner list, change only a now
+print a, d
+
+
+
+##31 threading
+#匹量處理
+#一次處例全部 或試分五部分 每個一個threading
+#optimize calculation
+
+##32 multiprocess
+#多核處理
+#most python use 1 core
+#threading still in one core
+
+##33 tkinter
+#GUI graph user interface
+#function application, welcome window...etc, lead user to his window
+#ex calculator interface
+
+
+
+##34 pickle
+#keep result, machine etc..
+import pickle
+dic = {'da':11,2:[23,4],'23':{1:2,'d':'std'}}
+
+#open>dump>close
+file = open('pk_example.pickle','wb') #open for writing
+pickle.dump(dic,file) #dump the file
+file.close() #close
+
+#add more to existing file
+file = open('pk_example.pickle','rb')
+dic1 = pickle.load(file)
+file.close()
+print dic1
+
+#add2 without closing it, in case forget
+with open('pk_example.pickle','rb') as file:
+    dic1 = pickle.load(file)
+print dic1
+
+
+
+##35 set
