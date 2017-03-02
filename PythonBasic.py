@@ -454,4 +454,24 @@ print dic1
 
 
 
-##35 set
+##35 set diff
+cha = ['a','a','b','b','b','c']
+print(set(cha)) #set no order
+
+sentence = 'Welcome world!'
+print set(sentence) #tear apart the string, keep capital, space
+
+print set([cha,sentence]) #not work, only list or string
+
+cha_set = set(cha)
+cha_set.add('x') #add element 'x' to a set
+cha_set.add('a') #make no diff, already exist, not ['a','x']
+cha_set.clear() #empty the set
+cha_set.remove('x') #remove the element 'x'
+cha_set.discard('y') #discard 'y', even 'y' not exist
+print cha_set
+
+set1 = cha_set
+set2 = set(['a','b','o'])
+print set2.difference(set1) #find different
+print set2.intersection(set1) #find same
