@@ -18,6 +18,7 @@ if __name__=='__main__':
     main()
 
 
+    
 ##3 join
 import threading
 import time
@@ -48,6 +49,7 @@ if __name__=='__main__':
 #if wish finish together, add join()
 
 
+
 ##4 queue
 #no return, need to save in each, take it out from main
 from gevent.queue import Queue
@@ -75,6 +77,7 @@ def multithread():
     
 if __name__=='__main__':
     multithread()
+
     
     
 ##5 GIL
@@ -111,6 +114,7 @@ if __name__ == '__main__':
     multithreading(l) #separate to 4 thread, but only fast a little bit
 print('multithreading: ', time.time()-s_t)
 #GIL run at a one time, lock on only on thread
+
 
 
 ##6 lock
