@@ -19,7 +19,7 @@ if __name__=='__main__':
 
 
     
-##3 join
+##3 join tread together
 import threading
 import time
 
