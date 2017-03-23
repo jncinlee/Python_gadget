@@ -118,7 +118,7 @@ print('multithreading: ', time.time()-s_t)
 
 
 ##6 lock
-#finish job1 and use the result to job2, need to lock
+#finish job1 and use the result to job2, need to lock, one finished then the other
 def job1():
     global A,lock
     lock.acquire() #when runing job1, lock here not job2
