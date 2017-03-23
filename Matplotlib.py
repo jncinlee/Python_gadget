@@ -16,7 +16,7 @@ x = np.linspace(-3,3,50)
 y1 = 2*x+1
 y2 = x**2
 
-plt.figure() #in first fig
+plt.figure(figsize=(5,8)) #in first fig
 plt.plot(x,y1)
 
 plt.figure(num=3, figsize=(8,5)) #in third fig
