@@ -349,10 +349,64 @@ plt.show()
 
 
 
+##17 plot in a plot
+fig =plt.figure()
+x=np.arange(7)
+y=[1,2,3,2,5,8,5]
+left,bottom,width,height=.1,.1,.8,.8
+ax1=fig.add_axes([left,bottom,width,height]) #arg percentage to overall
+ax1.plot(x,y,'r')
+ax1.set_xlabel('x')
+ax1.set_ylabel('y')
+ax1.set_title('tt')
+
+left,bottom,width,height=.2,.6,.25,.25
+ax2=fig.add_axes([left,bottom,width,height]) 
+#arg percentage to overall
+ax2.plot(x,y,'b')
+ax2.set_xlabel('x')
+ax2.set_ylabel('y')
+ax2.set_title('s1')
+
+plt.axes([.6,.2,.25,.25]) #below all follow the ax3
+plt.plot(y[::-1],x,'g')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('s2')
 
 
 
+##18 secondary axis
+x=np.arange(0,10,0.1)
+y1=0.05*x**2
+y2=-1*y1
+
+fig,ax1=plt.subplots() #set a x1, y1
+ax2 = ax1.twinx() #same as x1 but mirror to y1 as y2
+ax1.plot(x,y1,'g-')
+ax2.plot(x,y2,'b--')
+ax1.set_xlabel('x')
+ax1.set_ylabel('y1',color='g')
+ax2.set_ylabel('y2',color='b')
 
 
 
+#19 animate plot
+from matplotlib import animation
+fig,ax=plt.subplots()
 
+x=np.arange(0,2*np.pi,0.01)
+line, =ax.plot(x,np.sin(x)) #choose only first position
+
+def animate(i):
+    line.set_ydata(np.sin(x+i/10))
+    return line,
+
+def init():
+    line.set_ydata(np.sin(x))
+    return line,
+    
+ani = animation.FuncAnimation(fig=fig,func=animate, 
+            frames=100,init_func=init,interval=20,blit=True) 
+#varyu with time, frame=100 grid repeat, 20s interval, blit=change all plot
+plt.show()
