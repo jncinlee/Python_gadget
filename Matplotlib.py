@@ -11,7 +11,7 @@ plt.show()
 
 
 ##4 figure
-#show in other window
+#show in other window, call a figure
 x = np.linspace(-3,3,50)
 y1 = 2*x+1
 y2 = x**2
