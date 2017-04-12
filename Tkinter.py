@@ -199,6 +199,7 @@ window.mainloop()
 
 
 ##8 Canvas
+#for
 import tkinter as tk
 
 window = tk.Tk()
