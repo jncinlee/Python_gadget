@@ -116,6 +116,7 @@ lb.pack()
 
 
 ##5 Radio button
+#movable
 import tkinter as tk
 
 window = tk.Tk()
