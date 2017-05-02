@@ -1,4 +1,4 @@
-##3 Matplotlib plot
+##3 Matplotlib for plots
 import matplotlib.pyplot as plt
 import numpy as np
 
