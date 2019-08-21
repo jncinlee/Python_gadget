@@ -475,3 +475,5 @@ set1 = cha_set
 set2 = set(['a','b','o'])
 print set2.difference(set1) #find different
 print set2.intersection(set1) #find same
+
+#
